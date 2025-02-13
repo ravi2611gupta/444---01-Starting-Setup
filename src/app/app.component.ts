@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-
-import { DefaultComponent } from './default/default.component';
 import { signalsComponent } from './signals/signals.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     standalone: true,
-    imports: [DefaultComponent, signalsComponent]
+    imports: [signalsComponent]
 })
 export class AppComponent {}

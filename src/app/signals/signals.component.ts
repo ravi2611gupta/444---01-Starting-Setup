@@ -1,5 +1,5 @@
 import { NgFor } from "@angular/common";
-import { Component, signal } from "@angular/core";
+import { Component, computed, effect, signal } from "@angular/core";
 
 @Component({
   selector: "app-signals",
@@ -12,6 +12,13 @@ export class signalsComponent {
   actions = signal<string[]>([]);
   // counter = 0;
   counter = signal(0);
+  doubleCounter = computed(() => this.counter() * 2);
+
+  constructor() {
+    effect(() => {
+      console.log(this.counter()); //! This function will always run whenever there is a change in the counter signal, similar to how useEffect works with a dependency array.
+    });
+  }
 
   increment() {
     // this.counter++;
